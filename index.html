@@ -3,6 +3,10 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <title>Romanization → Hangul Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet">
+
   <script type="text/javascript" src="./index_files/prototype-1.6.0.3.js.download"></script>
   <script type="text/javascript" src="./index_files/hangul.trie.js.download"></script>
   <script type="text/javascript">
@@ -45,22 +49,46 @@
     Event.observe(window, "load", init);
     
   </script>
+  <style>
+    /* Light mode */
+
+    body {
+      font-family: 'Geologica', sans-serif;
+    }
+
+    @media (prefers-color-scheme: light) {
+        body {
+            background-color: white;
+            color: black;
+        }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #111111;
+            color: white;
+        }
+
+        .typingarea {
+          background-color: #232323;
+          color: #fff;
+        }
+    }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 </head>
 <body>
   <p>Converts romanization to Hangul (Korean script).</p>
-  
   <p>
-    Romanization:<br>
-    <textarea id="roman" width="90%" height="40%">hangug-eo</textarea>
+    Romanized text:
+    <br>
+    <textarea class="typingarea" id="roman" placeholder="Input Romanized text here." style="width:100%; height:40%"></textarea>
   </p>
   <p>
-    Hangul:<br>
-    <textarea id="hangul" rows="10" cols="80" readonly=""></textarea><br>
-    <a id="google_ko" href="http://www.google.co.kr/search?hl=ko&amp;q=%ED%95%9C%EA%B5%AD%EC%96%B4" target="_blank">Search with Google Korea</a> /
-    <a id="naver_jpdic" href="http://jpdic.naver.com/search.nhn?query=%ED%95%9C%EA%B5%AD%EC%96%B4" target="_blank">Consult Naver Korean-Japanese dictionary</a>
+    Hangul text:
+    <br>
+    <textarea class="typingarea" id="hangul" placeholder="Input Romanized text here." readonly="" style="width:100%; height:40%"></textarea>
   </p>
-  
-  <p>If you are familiar with Korean keyboard, <a href="http://colspan.net/hangulime/" target="_blank">Hangul IME</a> would be a better tool for you.</p>
 </body>
 </html>
