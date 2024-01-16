@@ -3,10 +3,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <title>Romanization → Hangul Converter</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet">
-
   <script type="text/javascript" src="./index_files/prototype-1.6.0.3.js.download"></script>
   <script type="text/javascript" src="./index_files/hangul.trie.js.download"></script>
   <script type="text/javascript">
@@ -37,8 +33,6 @@
       var hangul = convert($("roman").value);
       var encHangul = encodeURIComponent(hangul);
       $("hangul").value = hangul;
-      $("google_ko").href = "http://www.google.co.kr/search?hl=ko&q=" + encHangul;
-      $("naver_jpdic").href = "http://jpdic.naver.com/search.nhn?query=" + encHangul;
     }
     
     function init() {
@@ -70,7 +64,7 @@
             color: white;
         }
 
-        .typingarea {
+        #roman, #hangul {
           background-color: #232323;
           color: #fff;
         }
@@ -83,12 +77,14 @@
   <p>
     Romanized text:
     <br>
-    <textarea class="typingarea" id="roman" placeholder="Input Romanized text here." style="width:100%; height:40%"></textarea>
+    <textarea id="roman" placeholder="Input Romanized text here." style="width:100%; height:40%"></textarea>
   </p>
+
   <p>
     Hangul text:
     <br>
-    <textarea class="typingarea" id="hangul" placeholder="Input Romanized text here." readonly="" style="width:100%; height:40%"></textarea>
+    <textarea id="hangul" placeholder="" readonly="" style="width:100%; height:40%"></textarea>
+    <br>
   </p>
 </body>
 </html>
