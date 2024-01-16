@@ -1,0 +1,66 @@
+
+<!-- saved from url=(0080)file:///C:/Users/DJ/Downloads/Romanization%20%E2%86%92%20Hangul%20Converter.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Romanization → Hangul Converter</title>
+  <script type="text/javascript" src="./index_files/prototype-1.6.0.3.js.download"></script>
+  <script type="text/javascript" src="./index_files/hangul.trie.js.download"></script>
+  <script type="text/javascript">
+    
+    if (!window.console) console = {log: function(){ }, error: function(){ }};
+    
+    function convert(roman) {
+      var hangul = [];
+      var node = HANGUL_TRIE;
+      for (var i = roman.length - 1; i >= 0; --i) {
+        var r = roman[i].toUpperCase();
+        var next = node[r];
+        if (!next && node["$"]) {
+          hangul.push(node["$"]);
+          next = HANGUL_TRIE[r];
+        }
+        if (!next) {
+          if (roman[i] != "-") hangul.push(roman[i]);
+          next = HANGUL_TRIE;
+        }
+        node = next;
+      }
+      if (node["$"]) hangul.push(node["$"]);
+      return hangul.reverse().join("");
+    }
+    
+    function onRomanChanged() {
+      var hangul = convert($("roman").value);
+      var encHangul = encodeURIComponent(hangul);
+      $("hangul").value = hangul;
+      $("google_ko").href = "http://www.google.co.kr/search?hl=ko&q=" + encHangul;
+      $("naver_jpdic").href = "http://jpdic.naver.com/search.nhn?query=" + encHangul;
+    }
+    
+    function init() {
+      onRomanChanged();
+      new Form.Element.Observer("roman", 0.2, onRomanChanged);
+    }
+    
+    Event.observe(window, "load", init);
+    
+  </script>
+</head><body>
+  
+  <p>Converts romanization to Hangul (Korean script).</p>
+  
+  <p>
+    Romanization:<br>
+    <textarea id="roman" rows="10" cols="80">hangug-eo</textarea>
+  </p>
+  <p>
+    Hangul:<br>
+    <textarea id="hangul" rows="10" cols="80" readonly=""></textarea><br>
+    <a id="google_ko" href="http://www.google.co.kr/search?hl=ko&amp;q=%ED%95%9C%EA%B5%AD%EC%96%B4" target="_blank">Search with Google Korea</a> /
+    <a id="naver_jpdic" href="http://jpdic.naver.com/search.nhn?query=%ED%95%9C%EA%B5%AD%EC%96%B4" target="_blank">Consult Naver Korean-Japanese dictionary</a>
+  </p>
+  
+  <p>If you are familiar with Korean keyboard, <a href="http://colspan.net/hangulime/" target="_blank">Hangul IME</a> would be a better tool for you.</p>
+  
+
+</body></html>
