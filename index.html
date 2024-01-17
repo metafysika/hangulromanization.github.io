@@ -88,6 +88,10 @@
         }
     }
 
+    #title {
+      padding: 20px;
+    }
+
     #romanDiv {
       width: 50%;
       height: 80%;
@@ -115,19 +119,23 @@
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
         height: 40%;
         padding: 20px;
-        padding-bottom:40px;
+        padding-bottom:30px;
       }
     }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 </head>
 <body>
-  <p style="font-weight: bold;">Converts romanized text to Hangul.</p>
-  <p><sup style="font-weight: bold;">This website is an updated mirror of the website at <a href="http://gimite.net/roman2hangul/">http://gimite.net/roman2hangul/</a></sup></p>
+  <div id="title">
+    <p style="font-weight: bold;">Converts romanized text to Hangul.</p>
+    <p><sup style="font-weight: bold;">This website is an updated version of the website at <a href="http://gimite.net/roman2hangul/">http://gimite.net/roman2hangul/</a></sup></p>
+  </div>
+  
   <div id="romanDiv">
     <p style="font-weight: bold;">Romanized text:</p>
     <textarea id="roman" placeholder="Input Romanized text here."></textarea>
   </div>
+
   <div id="hangulDiv">
     <p style="font-weight: bold;">Hangul text:</p>
     <textarea id="hangul" placeholder="Hangul output will be displayed here." readonly=""></textarea>
